@@ -1,8 +1,8 @@
-
+let bagItems = [];
 displayItemsOnHomePage();
 
-function addToBag() {
-
+function addToBag(itemId) {
+    bagItems.push(itemId);
 }
 
 function displayItemsOnHomePage () {
@@ -23,7 +23,7 @@ function displayItemsOnHomePage () {
                 <span class="original-price">Rs ${item.original_price}</span>
                 <span class="discount">(${item.discount_percentage}% OFF)</span>
             </div>
-            <button class="button-add-bag" onclick="addToBag()">Add to Bag</button>
+            <button class="button-add-bag" onclick="addToBag(${item.id})">Add to Bag</button>
         </div>`
     });
     itemsContainerElement.innerHTML = innerHTML;
