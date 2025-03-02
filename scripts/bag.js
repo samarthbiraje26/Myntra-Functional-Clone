@@ -20,7 +20,11 @@ function loadBagItemObjects() {
 
 function displayBagItems() {
     let containerElement = document.querySelector('.bag-items-container');
-    //containerElement.innerHTML = ;
+    let innerHTML = '';
+    bagItemObjects.forEach(bagItem => {
+        innerHTML += generateItemHTML(bagItem);
+    });
+    containerElement.innerHTML = innerHTML;
 }
 
 function generateItemHTML(item) {
@@ -34,7 +38,7 @@ function generateItemHTML(item) {
               <div class="price-container">
                 <span class="current-price">Rs ${item.current_price}</span>
                 <span class="original-price">Rs ${item.original_price}</span>
-                <span class="discount-percentage">(${discount_percentage}% OFF)</span>
+                <span class="discount-percentage">(${item.discount_percentage}% OFF)</span>
               </div>
               <div class="return-period">
                 <span class="return-period-days">${item.return_period} days</span> return available
