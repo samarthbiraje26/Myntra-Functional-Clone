@@ -27,6 +27,14 @@ function displayBagItems() {
     containerElement.innerHTML = innerHTML;
 }
 
+function removeFromBag(itemId) {
+    bagItems = bagItems.filter(bagItemId => bagItemId !== itemId);
+    localStorage.setItem('bagItems', JSON.stringify(bagItems));
+    loadBagItemObjects();
+    displayBagIcon();
+    displayBagItems();
+}
+
 function generateItemHTML(item) {
     return `<div class="bag-item-container">
             <div class="item-left-part">
@@ -49,6 +57,6 @@ function generateItemHTML(item) {
               </div>
             </div>
 
-            <div class="remove-from-cart">X</div>
+            <div class="remove-from-cart" onclick="removeFromBag(${item.id})">X</div>
           </div>`; 
 }
